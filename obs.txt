@@ -1,0 +1,97 @@
+Todo projeto JavaScript moderno começa com o arquivo package.json, cuja principal função é armazenar metatadados não visíveis no site para a aplicação funcionar. Possui dependência de apps de terceiros, e o devDependencies, necessário para enquanto você estiver desenvolvendo seu site, se tornando inútil quando você lançar seu site ao ar.
+
+no-modules é onde fica todos os arquivos das dependencias
+
+pulic é os arquivos que ficam visíveis para nossa apliacação, como fontes, imagens, etc.
+
+src é o código da nossa aplicação.
+
+fora dessas pastas são apenas arquivos de configuração para tudo funcionar corretamente.
+
+
+REACT
+TSX -> TypeScript + JSX
+JSX -> JavaScript + XML => HTML dentro do JavaScript
+
+
+ARQUIVO SRC/MAIN.TSX
+
+import React from 'react'
+// Importando o React e ReactDOM <- o DOM é para funcionar na web
+import ReactDOM from 'react-dom/client'
+
+// CreateRoot é um método que a gente usa apenas uma vez, buscando um elemento ID 'root', que está dentro do index.hmtl
+// Render -> renderizar (mostrar em tela, mosntrando em tela, dentro do elemento com ID root, o documento dentro do React.StrictMode, colocando o que quiser dentro)
+
+// Programação imperativa, ditar para o código exatamente o que precisa ser feito.
+// Programamação declarativa, sintaxe muito menor. Sendo mais fácil de manipular.
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    {/* <App /> */}
+    <h1>Hello Word!</h1>
+  </React.StrictMode>,
+)
+
+// Toda interface da aplicação, quando estiver usando: Angular, React, Vue, Svelte, Solid, Aurelia, Lit, etc... todas essas bibliotecas, elas são contruídas a partir do JavaScript.
+
+
+COMPONENTES
+
+Pequenas partes de interface reutilizáveis. Como o visual de uma postagem do Twitter, com texto, curtidas, todos tem um comportamento extremamente semelhante, podendo ser criado como um componente; igual tags do HTML.
+
+Componente React sempre inicia com caixa alta, letra maiúscula. (exemplo: Tweet.tsx)
+
+Um componente é uma função com o mesmo nome do componente, retornando HTML. O código que queremos reaproveitar.
+
+Atributos dentro de um componente => Propriedade, tudo o que muda, visualmente ou no comportamento.
+
+React se resume a criar vários componentes de forma saudável e conseguir enviar informações entre eles.
+
+Propriedade Children -> tudo o que a gente passa como filho para o componente.
+
+
+TYPESCRIPT NO REACT
+
+Ferramente de tipagem estática para o JavaScript;
+Tipagem estática -> mecanismo para evitar erros ENQUANTO a gente tá desenvolvendo a nossa aplicação.
+
+
+ROTEAMENTO NO REACT
+
+Navegar entre páginas, ter várias páginas entre aplicações.
+SPA (Single-page Application), o conteúdo mudou, mas não houve uma alteração da página, um redirecionamento, apenas o conteúdo que mudou. Mudar o conteúdo da página baseado no endereço que o usuário está acessando.
+
+Biblioteca mais famosa do Rect para lidar com redirecionamente entre páginas: https://reactrouter.com/en/main
+
+Desenvolver aplicativos para web: Electron -> https://www.electronjs.org/pt/
+
+Em aplicativos web normalmente tem um roteador.
+
+
+CAPTURANDO DADOS DO FORMULÁRIO
+
+Permitir o usuário a fazer interações na nossa aplicação, capturando dados. Pegar o que ele digitou e aparecer na tela, como um novo tweet.
+
+
+FLUXO DE RENDERIZAÇÕES
+
+Render -> Renderização: mostrar em tela, quando fala de fluxo de renderização, o React entende que algo mudou nas variáveis de estado (useState). Mas como React mostra o novo valor em tela?
+Quando um componente é exibido em tela pela primeira vez, tudo o que está dentro dela é executado. Mas um componente React não é executado uma só vez, todo o código dentro do componente, é executado automaticamente sempre que algo é alterado dentro do estado. Sempre há uma renderização quando é executado algo no estado.
+
+Tome cuidado com o que você vai colocar dentro do componente.
+Dentro do fluxo de renderização do React, toda vez que alteramos o estado de um componente, todo o componente é recalculado, todo o código é executado novamente.
+
+O segundo momento quando um componente é recriado do zero, o componente PAI é renderizado.
+
+O terceiro momento quando um componente é recriado do zero, é toda vez que alguma das suas propriedades mudarem, verificando se é necessário realizar alterações.
+
+Por baixo dos panos, o React executa algo chamado de "Algoritmo de reconciliação":
+1. Cria a nova versão do HTML do componente, em memória. Nova versão do que foi colocado dentro do return com o estado.
+2. Compara essa nova versão com a nova versão do HTML, antes do estado (Diff -> diferença).
+3. Aplicar as operações JavaScript para alterar somente o necessário do HTML, se ele perceber que está tudo igual, menos uma parte, ele vai executar todas as instruções por baixo dos panos para alterar apenas essa parte.
+
+
+LIDANDO COM EVENTOS (onKeyDown)
+
+
+RESPONSIVO
